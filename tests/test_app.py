@@ -36,3 +36,8 @@ def test_signup_and_duplicate():
 def test_signup_nonexistent_activity():
     response = client.post("/activities/NonExistent/signup?email=user@mergington.edu")
     assert response.status_code == 404
+
+
+def test_root_redirect():
+    response = client.get("/", follow_redirects=False)
+    assert response.status_code == 307
